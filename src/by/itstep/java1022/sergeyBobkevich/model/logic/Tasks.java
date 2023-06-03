@@ -8,6 +8,7 @@ import java.util.Collections;
 public class Tasks {
 
     public boolean Task01(int[] vector) {
+//Задание 1:
 //Необходимо разработать программу, которая проверяет, что все
 // элементы вектора находятся в упорядоченном виде, т.е. отсортированы по возрастанию или убыванию.
 
@@ -36,6 +37,10 @@ public class Tasks {
     }
 
 
+    //Задание 2:
+    //Необходимо разработать программу, которая проверяет, что все элементы вектора расположены
+    // в зеркальном виде относительно его середины.
+
     public boolean Task02(int[] vector) {
 
         int countIdenticalElem = 0;
@@ -58,9 +63,42 @@ public class Tasks {
         return result;
     }
 
+    //Задание 3:
+    //Необходимо разработать программу, которая проверяет, что все элементы вектора различны/одинаковы.
+    public boolean Task03(int[] vector) {
 
-    public static int Task3(int[] vector) {
-        return 0;
+        Tasks tasks = new Tasks();
+        boolean result = tasks.Task01(vector);
+
+        int countDescending = 0;
+        int countAscending = 0;
+        int countEqual = 0;
+
+        if (result) {
+
+            for (int i = 0; i < vector.length - 1; i++) {
+
+                if (vector[i] > vector[i + 1]) {
+                    countDescending++;
+                } else if (vector[i] < vector[i + 1]) {
+                    countAscending++;
+                } else if (vector[i] != vector[i + 1]) {
+                    if (vector[i] == vector[i + 1]) {
+                        countEqual++;
+                    }
+                } else {
+                    countEqual++;
+                }
+
+            }
+
+        }
+
+        if (vector.length - 1 == countDescending || vector.length - 1 == countAscending || vector.length - 1 == countEqual) {
+            result = true;
+        }
+
+        return result;
     }
 
     public static int Task4(int[] vector) {
