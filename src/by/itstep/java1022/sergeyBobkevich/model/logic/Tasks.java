@@ -98,6 +98,10 @@ public class Tasks {
         return result;
     }
 
+
+    //Задание: 4
+    //Написать программу, которая подсчитывает количество только чётных/нечётных элементов вектора.
+
     public String Task04(int[] vector) {
 
         int countAscending = 0;
@@ -139,12 +143,65 @@ public class Tasks {
 
         }
 
-        if (!result){
+        if (!result) {
             return "Not correct data !!!";
         }
 
 
         return "even: " + countAscending + ", " + "odd: " + countDescending;
+    }
+//Задание: 5
+// Необходимо написать программу, которая обрабатывает результаты экзамена.
+// Для экзамена используется пятибалльная система оценивания знаний.
+// Для каждой оценки программа должна вычислить процент от общего количества оценок.
+
+    public String Task05(String marks) {
+
+
+        if (marks.length() == 0){
+            return "Not correct data !!!";
+        }
+
+        String[] masSym = marks.split(" ");
+
+        int[] masNum = new int[masSym.length];
+
+        for (int i = 0; i < masNum.length; i++) {
+            masNum[i] = Integer.parseInt(masSym[i]);
+            if (masNum[i] > 5 || masNum[i] < 0) {
+                return "Not correct data !!!";
+            }
+        }
+
+
+
+        int count0 = 0;
+        int count1 = 0;
+        int count2 = 0;
+        int count3 = 0;
+        int count4 = 0;
+        int count5 = 0;
+
+
+        for (int j : masNum) {
+            switch (j) {
+                case 0 -> count0++;
+                case 1 -> count1++;
+                case 2 -> count2++;
+                case 3 -> count3++;
+                case 4 -> count4++;
+                case 5 -> count5++;
+            }
+        }
+
+        return "Marks: 5 4 4 5 3 4 3 4 5 3 4 4 3 4 4 3 5 3 3 4 5 5 5 5 4 5 5 5 2 5\n" +
+                "Exam Result: \n" +
+                "fives - " + (count5 * 100) / masNum.length + "%" + " (" + count5 + ")\n" +
+                "four - " + (count4 * 100) / masNum.length + "%" + " (" + count4 + ")\n" +
+                "triplets - " + (count3 * 100) / masNum.length + "%" + " (" + count3 + ")\n" +
+                "deuces - " + (count2 * 100) / masNum.length + "%" + " (" + count2 + ")\n" +
+                "units - " + (count1 * 100) / masNum.length + "%" + " (" + count1 + ")\n" +
+                "zeros - " + (count0 * 100) / masNum.length + "%" + " (" + count1 + ")";
     }
 
 

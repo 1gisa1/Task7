@@ -341,8 +341,6 @@ public class VectorTest {
     }
 
 
-
-
     //-------------(Тесты к четвертому заданию)
 
 
@@ -412,7 +410,7 @@ public class VectorTest {
     @Test
     public void testTask04WithNotCorrectedData() {
         //Arrange
-        int[] vector = {1,2,3,4,1};
+        int[] vector = {1, 2, 3, 4, 1};
         String expected = "Not correct data !!!";
 
         //Act
@@ -422,6 +420,64 @@ public class VectorTest {
         assertEquals(expected, actual);
 
     }
+
+    //-------------(Тесты к пятому заданию)
+
+    //Тест на правильность работы программы, содержащего корректные данные:
+    @Test
+    public void testTask05WithCorrectData() {
+        //Arrange
+        String mark = "5 4 4 5 3 4 3 4 5 3 4 4 3 4 4 3 5 3 3 4 5 5 5 5 4 5 5 5 2 5";
+        String expected = "Marks: 5 4 4 5 3 4 3 4 5 3 4 4 3 4 4 3 5 3 3 4 5 5 5 5 4 5 5 5 2 5\n" +
+                "Exam Result: \n" +
+                "fives - 40% (12)\n" +
+                "four - 33% (10)\n" +
+                "triplets - 23% (7)\n" +
+                "deuces - 3% (1)\n" +
+                "units - 0% (0)\n" +
+                "zeros - 0% (0)";
+
+        //Act
+        String actual = tasks.Task05(mark);
+
+        //Assert
+        assertEquals(expected, actual);
+
+    }
+
+
+    //Тест на правильность работы программы, содержащего некорректные данные:
+    @Test
+    public void testTask05WithNotCorrectData() {
+        //Arrange
+        String mark = "5 4 4 5 3 4 3 4 5 3 4 4 3 4 -4 3 5 3 3 4 5 5 5 5 4 5 6 5 2 5";
+        String expected = "Not correct data !!!";
+
+        //Act
+        String actual = tasks.Task05(mark);
+
+        //Assert
+        assertEquals(expected, actual);
+
+    }
+
+    //Тест на правильность работы программы, содержащего нечего:
+    @Test
+    public void testTask05WithNotData() {
+        //Arrange
+        String mark = "";
+        String expected = "Not correct data !!!";
+
+        //Act
+        String actual = tasks.Task05(mark);
+
+        //Assert
+        assertEquals(expected, actual);
+
+    }
+
+
+
 
 
 }
