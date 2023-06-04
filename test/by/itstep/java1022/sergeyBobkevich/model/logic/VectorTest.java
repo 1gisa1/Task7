@@ -61,7 +61,7 @@ public class VectorTest {
     public void testTask01ReturnTrueAllValuesSame() {
         //Arrange
         int[] vector = {1, 1, 1, 1, 1, 1, 1, 1, 1};
-        boolean expected = true;
+        boolean expected = false;
 
         //Act
         boolean actual = tasks.Task01(vector);
@@ -334,6 +334,89 @@ public class VectorTest {
 
         //Act
         boolean actual = tasks.Task03(vector);
+
+        //Assert
+        assertEquals(expected, actual);
+
+    }
+
+
+
+
+    //-------------(Тесты к четвертому заданию)
+
+
+    //Тест на правильность работы программы для вектора, содержащего только один нечетный элемент:
+    @Test
+    public void testTask04WithOneElemOdd() {
+        //Arrange
+        int[] vector = {1};
+        String expected = "even: 0, odd: 1";
+
+        //Act
+        String actual = tasks.Task04(vector);
+
+        //Assert
+        assertEquals(expected, actual);
+
+    }
+
+    //Тест на правильность работы программы для вектора, содержащего только один четный элемент:
+    @Test
+    public void testTask04WithOneElemEven() {
+        //Arrange
+        int[] vector = {2};
+        String expected = "even: 1, odd: 0";
+
+        //Act
+        String actual = tasks.Task04(vector);
+
+        //Assert
+        assertEquals(expected, actual);
+
+    }
+
+
+    //Тест на правильность работы программы для вектора, содержащего не одного элемента:
+    @Test
+    public void testTask04WithZeroElem() {
+        //Arrange
+        int[] vector = {};
+        String expected = "Not correct data !!!";
+
+        //Act
+        String actual = tasks.Task04(vector);
+
+        //Assert
+        assertEquals(expected, actual);
+
+    }
+
+
+    //Тест на правильность работы программы для вектора, содержащего корректные данные:
+    @Test
+    public void testTask04WithCorrectData() {
+        //Arrange
+        int[] vector = {1, 3, 6, 10, 15};
+        String expected = "even: 2, odd: 3";
+
+        //Act
+        String actual = tasks.Task04(vector);
+
+        //Assert
+        assertEquals(expected, actual);
+
+    }
+
+    //Тест на правильность работы программы для вектора, содержащего некорректные данные:
+    @Test
+    public void testTask04WithNotCorrectedData() {
+        //Arrange
+        int[] vector = {1,2,3,4,1};
+        String expected = "Not correct data !!!";
+
+        //Act
+        String actual = tasks.Task04(vector);
 
         //Assert
         assertEquals(expected, actual);

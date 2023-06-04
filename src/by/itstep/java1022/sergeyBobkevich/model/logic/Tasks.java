@@ -18,11 +18,11 @@ public class Tasks {
 
         for (int i = 0; i < vector.length - 1; i++) {
 
-            if (vector[i] >= vector[i + 1]) {
+            if (vector[i] > vector[i + 1]) {
                 countDescending++;
             }
 
-            if (vector[i] <= vector[i + 1]) {
+            if (vector[i] < vector[i + 1]) {
                 countAscending++;
             }
         }
@@ -67,42 +67,84 @@ public class Tasks {
     //Необходимо разработать программу, которая проверяет, что все элементы вектора различны/одинаковы.
     public boolean Task03(int[] vector) {
 
-        Tasks tasks = new Tasks();
-        boolean result = tasks.Task01(vector);
-
+        boolean result = false;
         int countDescending = 0;
         int countAscending = 0;
         int countEqual = 0;
 
-        if (result) {
 
-            for (int i = 0; i < vector.length - 1; i++) {
+        for (int i = 0; i < vector.length - 1; i++) {
 
-                if (vector[i] > vector[i + 1]) {
-                    countDescending++;
-                } else if (vector[i] < vector[i + 1]) {
-                    countAscending++;
-                } else if (vector[i] != vector[i + 1]) {
-                    if (vector[i] == vector[i + 1]) {
-                        countEqual++;
-                    }
-                } else {
+            if (vector[i] > vector[i + 1]) {
+                countDescending++;
+            } else if (vector[i] < vector[i + 1]) {
+                countAscending++;
+            } else if (vector[i] != vector[i + 1]) {
+                if (vector[i] == vector[i + 1]) {
                     countEqual++;
                 }
-
+            } else {
+                countEqual++;
             }
 
         }
 
-        if (vector.length - 1 == countDescending || vector.length - 1 == countAscending || vector.length - 1 == countEqual) {
+
+        if (vector.length - 1 == countDescending || vector.length - 1 == countAscending
+                || vector.length - 1 == countEqual) {
             result = true;
         }
 
         return result;
     }
 
-    public static int Task4(int[] vector) {
-        return 0;
+    public String Task04(int[] vector) {
+
+        int countAscending = 0;
+        int countDescending = 0;
+        boolean result = false;
+
+        //проверка на то является ли последовательность вектором
+        for (int i = 0; i < vector.length - 1; i++) {
+
+            if (vector[i] >= vector[i + 1]) {
+                countDescending++;
+            }
+
+            if (vector[i] <= vector[i + 1]) {
+                countAscending++;
+            }
+        }
+
+
+        if (vector.length - 1 == countDescending || vector.length - 1 == countAscending) {
+            result = true;
+        }
+
+
+        countAscending = 0;//теперь отвечает за четные числа
+        countDescending = 0; //теперь отвечает за нечетные числа
+
+
+        //подсчет элементов
+        if (result) {
+
+            for (int j : vector) {
+                if (j % 2 == 0) {
+                    countAscending++;
+                } else {
+                    countDescending++;
+                }
+            }
+
+        }
+
+        if (!result){
+            return "Not correct data !!!";
+        }
+
+
+        return "even: " + countAscending + ", " + "odd: " + countDescending;
     }
 
 
